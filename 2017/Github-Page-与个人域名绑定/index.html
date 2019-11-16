@@ -1,0 +1,719 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Configuration," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一个问题在将sjtume的域名与Github Page 绑定时产生了一点困惑： 在 github 官方文档的 Setting up a custom subdomain 中有这样的警告:  Danger: Do not use wildcard DNS records (e.g. *.example.com) with GitHub Pages! A wildcard DNS record wil">
+<meta name="keywords" content="Configuration">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github Page 与个人域名绑定">
+<meta property="og:url" content="http:&#x2F;&#x2F;a.sjtume.cn&#x2F;2017&#x2F;Github-Page-%E4%B8%8E%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A&#x2F;index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="一个问题在将sjtume的域名与Github Page 绑定时产生了一点困惑： 在 github 官方文档的 Setting up a custom subdomain 中有这样的警告:  Danger: Do not use wildcard DNS records (e.g. *.example.com) with GitHub Pages! A wildcard DNS record wil">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;a.sjtume.cn&#x2F;images&#x2F;github_page1.PNG">
+<meta property="og:updated_time" content="2017-03-27T14:17:29.249Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;a.sjtume.cn&#x2F;images&#x2F;github_page1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://a.sjtume.cn/2017/Github-Page-与个人域名绑定/"/>
+
+
+
+
+
+  <title> Github Page 与个人域名绑定 | Hello World </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b8fca2cc0ca886e47f9b6adc76ef1720";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hello World</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://a.sjtume.cn/2017/Github-Page-%E4%B8%8E%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="llxxee">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hello World">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hello World" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Github Page 与个人域名绑定
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-13T18:04:02-08:00">
+                2017-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/Github-Page-%E4%B8%8E%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/Github-Page-与个人域名绑定/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一个问题"><a href="#一个问题" class="headerlink" title="一个问题"></a>一个问题</h2><p>在将sjtume的域名与Github Page 绑定时产生了一点困惑：<br> 在 github 官方文档的 <a href="https://help.github.com/articles/setting-up-a-custom-subdomain/" target="_blank" rel="noopener">Setting up a custom subdomain</a> 中有这样的警告:</p>
+<blockquote>
+<p>Danger: Do not use wildcard DNS records (e.g. *.example.com) with GitHub Pages! A wildcard DNS record will allow anyone to host a GitHub Pages site at one of your subdomains.</p>
+</blockquote>
+<p> 这让我感到很奇怪：域名解析的 CNAME 明明指向的是我个人的 github page，为什么别人可以从我的域名跳转到别的 github page?</p>
+<h2 id="一种解答"><a href="#一种解答" class="headerlink" title="一种解答"></a>一种解答</h2><h3 id="背景知识-DNS中的CNAME"><a href="#背景知识-DNS中的CNAME" class="headerlink" title="背景知识 - DNS中的CNAME"></a>背景知识 - DNS中的CNAME</h3><blockquote>
+<p>A Canonical Name record (abbreviated as CNAME record) is a type of resource record in the Domain Name System (DNS) used to specify that a domain name is an alias for another domain, which is the “canonical” domain.<br>CNAME records** must always point to another domain name, never directly to an IP address.**</p>
+</blockquote>
+<p>简单地看，CNAME 记录就是将对一个网址的访问转到另一个指定的主机上。在github page与个人域名绑定的过程中，对个人域名DNS解析增加一项指向username.github.io的解析，那么实际上对个人域名的请求最后到了github的服务器上。</p>
+<p><strong>这将产生一个问题：</strong>github的服务器上有无数用户的github page，如何判断应该返回哪个page？<br><strong>这个问题有一种解释(实际上是错的)：</strong>个人域名的DNS解析中的主机记录是确定的github page   例如访问 <code>username.example.com</code> 的个人域名，个人域名的CNAME主机记录设为 <code>username.github.io</code> 那么github的服务器根据得到的请求中的 <code>username.github.io</code> 中的 <code>username</code>来判断返回哪个用户的github page. 这是一个很容易理解的过程，然而这并不是真实的故事。<br><strong>为什么这种解释是错误的</strong>: 事实上，CNAME中的主机记录并不是顶级域名，也就是说 <code>username.github.io</code>也有一个CNAME记录。可以用 <code>dig username.github.io</code> 验证：<br><img src="/images/github_page1.PNG" alt="&quot;CNAME&quot;"><br>可以看到对某个用户的github page的访问最终解析到了<code>github.map.fastly.net</code>,而这个网址的A记录指向了最终处理请求的服务器地址（151.101.100.133）<br>这样看，对个人域名的解析过程就比较清晰了：</p>
+<ol>
+<li>访问 username.example.com ， example.com的CNAME解析主机记录为 username.github.io</li>
+<li>请求这时指向了 username.github.io , 又被导到了 github.map.fastly.net</li>
+<li>github.map.fastly.net 的A记录的服务器处理请求</li>
+</ol>
+<p>回到最开始的问题：</p>
+<blockquote>
+<p>A wildcard DNS record will allow anyone to host a GitHub Pages site at one of your subdomains.</p>
+</blockquote>
+<p><strong>上文中错误解释错在：</strong>最终处理请求的服务器不是根据个人域名的CNAME中的<code>username.github.io</code>来返回page的，因为如果是这样，那对*.example.com的请求都将被解析到example.com的CNAME记录中那个固定的<code>username.github.io</code> ,例如<code>bob.github.io</code>,最终服务器将永远返回 bob 的 github page. 也就不存在上面那个任何人都可以将自己的page与 example.com 绑定了。</p>
+<p>实际上，最终处理请求的服务器是根据最初的请求信息来判断应返回什么page的,所以将个人域名与github page绑定的过程中有一步是在 repository 中添加 <code>CNAME</code> 文件，指定绑定的域名。</p>
+<p>完整的过程是这样的：</p>
+<ol>
+<li>用户访问 username.example.com</li>
+<li>该请求最终被github服务器处理，该服务器在所有github page repository 中寻找匹配的 <code>CNAME</code> 文件。如果某个 <code>CNAME</code>文件的内容正是 <code>username.example.com</code>，则返回该page</li>
+</ol>
+<p>显然，如果用通配符<code>*</code>指定example.com的CNMAE记录，那么对 joe.example.com 的请求即便被解析到了 bob.github.io, 最终还是会由 github.map.fastly.net 处理请求，<strong>而这时服务器只关心哪个repository的CNAME文件是 joe.example.com，不在乎这个请求是从 bob.github.io那里转来的</strong><br>因此一旦一个域名的CNAME记录是有通配符的，如*.example.com， 那么任意用户anyone(举个例子）只要将他的github page repository中的CNAME文件设为anyone.example.com，他就实现了自己的github page与example.com的绑定</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Configuration/" rel="tag"># Configuration</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/Chrome-Extension-Development/" rel="prev" title="Chrome Extension Development">
+                Chrome Extension Development <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5878970853637a6f" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="llxxee" />
+          <p class="site-author-name" itemprop="name">llxxee</p>
+          <p class="site-description motion-element" itemprop="description">一个人只拥有此生此世是不够的</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个问题"><span class="nav-number">1.</span> <span class="nav-text">一个问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一种解答"><span class="nav-number">2.</span> <span class="nav-text">一种解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景知识-DNS中的CNAME"><span class="nav-number">2.1.</span> <span class="nav-text">背景知识 - DNS中的CNAME</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">llxxee</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'sjtume-1';
+      var disqus_identifier = '2017/Github-Page-与个人域名绑定/';
+
+      var disqus_title = "Github Page 与个人域名绑定";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

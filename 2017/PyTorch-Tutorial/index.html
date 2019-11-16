@@ -1,0 +1,787 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,DL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Getting StartedTensors are similar to numpy’s ndarrays, with the addition being that Tensors can also be used on a GPU to accelerate computing. 12from __future__ import print_functionimport torch  Con">
+<meta name="keywords" content="Python,DL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyTorch Tutorial">
+<meta property="og:url" content="http:&#x2F;&#x2F;a.sjtume.cn&#x2F;2017&#x2F;PyTorch-Tutorial&#x2F;index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="Getting StartedTensors are similar to numpy’s ndarrays, with the addition being that Tensors can also be used on a GPU to accelerate computing. 12from __future__ import print_functionimport torch  Con">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;pytorch.org&#x2F;tutorials&#x2F;_images&#x2F;mnist.png">
+<meta property="og:updated_time" content="2017-04-02T02:35:54.811Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;pytorch.org&#x2F;tutorials&#x2F;_images&#x2F;mnist.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://a.sjtume.cn/2017/PyTorch-Tutorial/"/>
+
+
+
+
+
+  <title> PyTorch Tutorial | Hello World </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b8fca2cc0ca886e47f9b6adc76ef1720";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hello World</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://a.sjtume.cn/2017/PyTorch-Tutorial/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="llxxee">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hello World">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hello World" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PyTorch Tutorial
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-27T20:47:09-07:00">
+                2017-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/PyTorch-Tutorial/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/PyTorch-Tutorial/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><p>Tensors are similar to numpy’s ndarrays, with the addition being that Tensors can also be used on a GPU to accelerate computing.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import print_function</span><br><span class="line">import torch</span><br></pre></td></tr></table></figure>
+
+<p>Construct a <strong>uninitialized</strong> matrix or a <strong>randomly initialized</strong> matrix</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.Tensor(5, 3)</span><br><span class="line">x = torch.rand(5, 3)</span><br></pre></td></tr></table></figure>
+
+<p>Get its size</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x.size())</span><br></pre></td></tr></table></figure>
+
+<p>Addition operation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x+y</span><br><span class="line">torch.add(x,y)</span><br><span class="line">torch.add(x,y,out=result)</span><br><span class="line">y.add_(x)</span><br></pre></td></tr></table></figure>
+
+<p><em>Note:</em> Any operation that mutates a tensor in-place is post-fixed with an <code>_</code>For example: <code>x.copy_(y), x.t_()</code>, will change <code>x</code>.</p>
+<p><strong>More Tensor operations in <a href="http://pytorch.org/docs/torch" target="_blank" rel="noopener">documentation</a></strong></p>
+<h2 id="Numpy-Bridge"><a href="#Numpy-Bridge" class="headerlink" title="Numpy Bridge"></a>Numpy Bridge</h2><p>The torch Tensor and numpy array will share their underlying memory locations, and changing one will change the other.</p>
+<h3 id="Converting-torch-Tensor-to-numpy-Array"><a href="#Converting-torch-Tensor-to-numpy-Array" class="headerlink" title="Converting torch Tensor to numpy Array"></a>Converting torch Tensor to numpy Array</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(5)</span><br><span class="line">b = a.numpy()</span><br><span class="line">a.add_(1)</span><br></pre></td></tr></table></figure>
+<p>The result of <code>a.add_(1)</code> will be both <code>a</code> and <code>b</code> are changed because they share their underlying memory locations.</p>
+<h3 id="Converting-numpy-Array-to-torch-Tensor"><a href="#Converting-numpy-Array-to-torch-Tensor" class="headerlink" title="Converting numpy Array to torch Tensor"></a>Converting numpy Array to torch Tensor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">a = np.ones(5)</span><br><span class="line">b = torch.from_numpy(a)</span><br><span class="line">np.add(a, 1, out=a)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+
+<h3 id="CUDA-Tensors"><a href="#CUDA-Tensors" class="headerlink" title="CUDA Tensors"></a>CUDA Tensors</h3><p>Tensors can be moved onto GPU using the <code>.cuda</code> function.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># let us run this cell only if CUDA is available</span><br><span class="line">if torch.cuda.is_available():</span><br><span class="line">    x = x.cuda()</span><br><span class="line">    y = y.cuda()</span><br><span class="line">    x + y</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Autograd-automatic-differentiation"><a href="#Autograd-automatic-differentiation" class="headerlink" title="Autograd: automatic differentiation"></a>Autograd: automatic differentiation</h2><p>The <code>autograd</code> package provides automatic differentiation for all operations on Tensors. It is a define-by-run framework, which means that <strong>your backprop is defined by how your code is run</strong>, and that every single iteration can be different.<br><strong>Note that all the following codes are based on <code>from torch.autograd import Variable</code></strong></p>
+<h3 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h3><p><code>autograd.Variable</code> is the <strong>central class</strong> of the package. It wraps a Tensor, and supports nearly all of operations defined on it. Once you finish your computation you can call <code>.backward()</code> and have all the gradients computed automatically.</p>
+<p>You can access the raw tensor through the <code>.data</code> attribute, while the gradient w.r.t. this variable is accumulated into <code>.grad</code>.</p>
+<p>There’s one more class which is very important for autograd implementation - a <code>Function</code>.</p>
+<p><code>Variable</code> and <code>Function</code> are interconnected and <strong>build up an acyclic graph</strong>, that encodes a complete history of computation. Each variable has a <code>.creator</code> attribute that references a <code>Function</code> that has created the Variable (<em>except for <code>Variables</code> created by the user - their <code>creator</code> is <code>None</code></em>).</p>
+<p>If you want to compute the derivatives, you can call <code>.backward()</code> on a <code>Variable</code>. If <code>Variable</code> is a scalar (i.e. it holds a one element data), you don’t need to specify any arguments to backward(), <em>however if it has more elements, you need to specify a <code>grad_output</code> argument that is a tensor of matching shape.</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">from torch.autograd import Variable</span><br><span class="line"></span><br><span class="line"># Create a variable</span><br><span class="line">x = Variable(torch.ones(2, 2), requires_grad=True)</span><br><span class="line">print(x)</span><br><span class="line"></span><br><span class="line"># Addition operation</span><br><span class="line">y = x + 2</span><br><span class="line">print(y)</span><br><span class="line">print(y.creator)</span><br><span class="line"># result: &lt;torch.autograd._functions.basic_ops.AddConstant object at 0x7f53f1df7888&gt;</span><br><span class="line"></span><br><span class="line"># More operations</span><br><span class="line">z = y * y * 3</span><br><span class="line">out = z.mean()</span><br><span class="line">print(z, out)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Gradients"><a href="#Gradients" class="headerlink" title="Gradients"></a>Gradients</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = Variable(torch.ones(2, 2), requires_grad=True)</span><br><span class="line">y = x + 2</span><br><span class="line">z = y * y * 3</span><br><span class="line">out = z.mean()</span><br></pre></td></tr></table></figure>
+<p>Now <code>out.backward()</code> is equivalent to doing <code>out.backward(torch.Tensor([1.0]))</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">out.backward()</span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
+<p>It will print print gradients d(out)/dx</p>
+<p>You can do many crazy things with autograd!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(3)</span><br><span class="line">x = Variable(x, requires_grad=True)</span><br><span class="line"></span><br><span class="line">y = x * 2</span><br><span class="line">while y.data.norm() &lt; 1000:</span><br><span class="line">    y = y * 2</span><br><span class="line"></span><br><span class="line">print(y)</span><br><span class="line"></span><br><span class="line">gradients = torch.FloatTensor([0.1, 1.0, 0.0001])</span><br><span class="line">y.backward(gradients)</span><br><span class="line"></span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
+
+<p>Documentation of Variable and Function is at <a href="http://pytorch.org/docs/autograd" target="_blank" rel="noopener">here</a></p>
+<h2 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h2><p>Neural networks can be constructed using the <code>torch.nn</code> package.</p>
+<p>Now that you had a glimpse of <code>autograd</code>, <strong><code>nn</code> depends on autograd to define models and differentiate them.</strong></p>
+<p><strong>An <code>nn.Module</code> contains layers, and a method forward(input)that returns the output.</strong></p>
+<p><img src="http://pytorch.org/tutorials/_images/mnist.png" alt="&quot;neural network structure&quot;"><br>It is a simple feed-forward network. It takes the input, feeds it through several layers one after the other, and then finally gives the output.</p>
+<p>A typical training procedure for a neural network is as follows:</p>
+<ol>
+<li>Define the neural network that has some learnable parameters (or weights)</li>
+<li>Iterate over a dataset of inputs</li>
+<li>Process input through the network</li>
+<li>Compute the loss (how far is the output from being correct)</li>
+<li>Propagate gradients back into the network’s parameters</li>
+<li>Update the weights of the network, typically using a simple update rule: <code>weight = weight + learning_rate * gradient</code></li>
+</ol>
+<h3 id="Define-the-network"><a href="#Define-the-network" class="headerlink" title="Define the network"></a>Define the network</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">from torch.autograd import Variable</span><br><span class="line">import torch.nn as nn</span><br><span class="line">import torch.nn.functional as F</span><br><span class="line"></span><br><span class="line">class Net(nn.Module):</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        super(Net, self).__init__()</span><br><span class="line">        # 1 input image channel, 6 output channels, 5x5 square convolution kernel</span><br><span class="line">        self.conv1 = nn.Conv2d(1, 6, 5)</span><br><span class="line">        self.conv2 = nn.Conv2d(6, 16, 5)</span><br><span class="line">        self.fc1   = nn.Linear(16 * 5 * 5, 120)  # an affine operation: y = Wx + b</span><br><span class="line">        self.fc2   = nn.Linear(120, 84)</span><br><span class="line">        self.fc3   = nn.Linear(84, 10)</span><br><span class="line"></span><br><span class="line">    def forward(self, x):</span><br><span class="line">        x = F.max_pool2d(F.relu(self.conv1(x)), (2, 2))  # Max pooling over a (2, 2) window</span><br><span class="line">        x = F.max_pool2d(F.relu(self.conv2(x)), 2)  # If the size is a square you can only specify a single number</span><br><span class="line">        x = x.view(-1, self.num_flat_features(x))</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = F.relu(self.fc2(x))</span><br><span class="line">        x = self.fc3(x)</span><br><span class="line">        return x</span><br><span class="line"></span><br><span class="line">    def num_flat_features(self, x):</span><br><span class="line">        size = x.size()[1:]  # all dimensions except the batch dimension</span><br><span class="line">        num_features = 1</span><br><span class="line">        for s in size:</span><br><span class="line">            num_features *= s</span><br><span class="line">        return num_features</span><br><span class="line"></span><br><span class="line">net = Net()</span><br><span class="line">print(net)</span><br></pre></td></tr></table></figure>
+
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Net (</span><br><span class="line">  (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1))</span><br><span class="line">  (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))</span><br><span class="line">  (fc1): Linear (400 -&gt; 120)</span><br><span class="line">  (fc2): Linear (120 -&gt; 84)</span><br><span class="line">  (fc3): Linear (84 -&gt; 10)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+<p>You just have to define the forward function, and <strong>the backward function (where gradients are computed) is automatically defined for you using autograd.</strong> You can use any of the Tensor operations in the forward function.</p>
+<p>The learnable parameters of a model are returned by <code>net.parameters()</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">params = list(net.parameters())</span><br><span class="line">print(len(params))</span><br><span class="line">print(params[0].size())  # conv1&apos;s .weight</span><br></pre></td></tr></table></figure>
+<p>Out:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">torch.Size([6, 1, 5, 5])</span><br></pre></td></tr></table></figure>
+
+<p>The input to the forward is an autograd.Variable, and so is the output.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input = Variable(torch.randn(1, 1, 32, 32))</span><br><span class="line">out = net(input)</span><br></pre></td></tr></table></figure>
+
+<p>Zero the gradient buffers of all parameters and backprops with random gradients:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net.zero_grad()</span><br><span class="line">out.backward(torch.randn(1, 10))</span><br></pre></td></tr></table></figure>
+
+<p>Before proceeding further, let’s recap all the classes you’ve seen so far.</p>
+<p><strong>Recap:</strong></p>
+<ul>
+<li><code>torch.Tensor</code> - A multi-dimensional array.</li>
+<li><code>autograd.Variable</code> - Wraps a Tensor and records the history of operations applied to it. Has the same API as a <code>Tensor</code>, with some additions like <code>backward()</code>. Also holds the gradient w.r.t. the tensor.</li>
+<li><code>nn.Module</code> - Neural network module. Convenient way of encapsulating parameters, with helpers for moving them to GPU, exporting, loading, etc.</li>
+<li><code>nn.Parameter</code> - A kind of Variable, that is automatically registered as a parameter when assigned as an attribute to a Module.</li>
+<li><code>autograd.Function</code> - Implements forward and backward definitions of an autograd operation. Every Variable operation, <strong>creates at least a single Function node</strong>, that connects to functions that created a Variable and encodes its history*.</li>
+</ul>
+<p><strong>At this point, we covered:</strong></p>
+<ul>
+<li>Defining a neural network</li>
+<li>Processing inputs and calling backward.</li>
+</ul>
+<p><strong>Still Left:</strong></p>
+<ul>
+<li>Computing the loss</li>
+<li>Updating the weights of the network</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/DL/" rel="tag"># DL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/%E5%B9%B4%E8%BD%BB%E4%BA%BA%EF%BC%8C%E8%AF%B7%E5%BF%8D%E5%8F%97%E4%B8%80%E4%B8%8B/" rel="next" title="年轻人，请忍受一下">
+                <i class="fa fa-chevron-left"></i> 年轻人，请忍受一下
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/Araby/" rel="prev" title="Araby">
+                Araby <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5878970853637a6f" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="llxxee" />
+          <p class="site-author-name" itemprop="name">llxxee</p>
+          <p class="site-description motion-element" itemprop="description">一个人只拥有此生此世是不够的</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Getting Started</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy-Bridge"><span class="nav-number">2.</span> <span class="nav-text">Numpy Bridge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Converting-torch-Tensor-to-numpy-Array"><span class="nav-number">2.1.</span> <span class="nav-text">Converting torch Tensor to numpy Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Converting-numpy-Array-to-torch-Tensor"><span class="nav-number">2.2.</span> <span class="nav-text">Converting numpy Array to torch Tensor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CUDA-Tensors"><span class="nav-number">2.3.</span> <span class="nav-text">CUDA Tensors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Autograd-automatic-differentiation"><span class="nav-number">3.</span> <span class="nav-text">Autograd: automatic differentiation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable"><span class="nav-number">3.1.</span> <span class="nav-text">Variable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradients"><span class="nav-number">3.2.</span> <span class="nav-text">Gradients</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks"><span class="nav-number">4.</span> <span class="nav-text">Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-the-network"><span class="nav-number">4.1.</span> <span class="nav-text">Define the network</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">llxxee</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'sjtume-1';
+      var disqus_identifier = '2017/PyTorch-Tutorial/';
+
+      var disqus_title = "PyTorch Tutorial";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
