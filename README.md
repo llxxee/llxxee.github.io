@@ -1,1 +1,1 @@
-[A.sjtume.cn](http://a.sjtume.cn/)
+[paxos.run](http://paxos.run/)
